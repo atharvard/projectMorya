@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Piazzolla:wght@200;300;400;900&display=swap");
+/* imported the require font fron googlefont */
+
+/* import for the registration form */
+@import url("httpss://fonts.googleapis.com/css?family=Roboto");
+
+*{
+    margin :0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: "Piazolla", serif;
+}
+
+:root{
+    --main-bg: rgb(27, 45, 54);
+    --main-color : #0097e6; 
+
+}
+
+html{font-size: 62.5%;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.row{
+    margin: 0;
+}
+
+.main_menu{
+    background-color: var(--main-bg);
+
+}
+/* design the navbar */
+.navbar{
+    color: #fff;
+    background-color: var(--main-bg);
+    padding:2rem 0;
+}
+/* for design of navbar content spacing */
+.navbar li{
+    margin-left: 1rem;
+}
+
+/* for the content of navbar */
+.navbar a {
+    color: #fff;
+    font-size: 1.8rem;
+
+}
+/* courser gelya var color chnage zala pahije */
+.navbar a:hover{
+    color: orange;
+}
+/* too=ggler design */
+.navbar-toggler{
+    background-color: grey;
+}
+
+/* main header  design*/
+
+.main_header_left{
+    height: 70rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+/* desihn of header paragraph */
+.main_header_left p{
+    font-size: 2rem;
+}
+/* design of heading h1 */
+.main_header_left h1{
+    font-size: 4rem;
+    margin:1rem 0 4rem 0;
+    text-transform: capitalize;
+}
+/* to change the color of social activites */
+.main_header_left .text_clr{
+    color: var(--main-color);
+}
+.main_header_left button{
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.4rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px #000;
+    outline: none;
+}
+.main_header_left button:hover{
+    box-shadow: 0 8px 6px -6px var(--main-color);
+
+}
+
+
+.main_header_rightt{
+    height: 70rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+/* footer */
+footer{
+    width: 100%;
+    background-color: var(--main-bg);
+    margin-top: auto;
+
+}
+
+footer p{
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    line-height: 5rem;
+    font: 1.4rem
+}
+
+/*---------------------------------------*/
+/* signup form */
+/*---------------------------------------*/
+
+
+.signup-form{
+    font-family: "Roboto", sans-serif;
+    width: 650px;
+    margin: 30px auto;
+    background: linear-gradient(to right, #ffff 0%, #fafafa 50%, #ffffff 99%);
+    border-radius: 10px;
+}
+.form-header {
+    background-color: #eff0f1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.form-header h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #666;
+    padding: 20px 0;
+    border-bottom: 1px solid #cccccc;
+}
+/* Form Body */
+/*---------------------------------------*/
+.form-body {
+    padding: 10px 40px;
+    color: #666;
+}
+.form-group {
+    margin-bottom: 30px;
+}
+.form-body .label-title {
+    color: #1bba93;
+    font-size: 17px;
+    font-weight: bold;
+}
+.form-body .form-input {
+    font-size: 17px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+}
+.horizontal-group .left {
+    float: left;
+    width: 49%;
+}
+.horizontal-group .right {
+    float: right;
+    width: 49%;
+}
+input[type="file"] {
+    outline: none;
+    cursor: pointer;
+    font-size: 17px;
+}
+#range-label {
+    width: 15%;
+    padding: 5px;
+    background-color: #1bba93;
+    color: white;
+    border-radius: 5px;
+    font-size: 17px;
+    position: relative;
+    top: -8px;
+}
+::-webkit-input-placeholder {
+    color: #d9d9d9;
+}
+
+/* Form Footer */
+/*---------------------------------------*/
+.form-footer {
+    clear: both;
+}
+.signup-form .form-footer {
+    background-color: #eff0f1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 40px;
+    text-align: right;
+    border-top: 1px solid #cccccc;
+}
+.form-footer span {
+    float: left;
+    margin-top: 10px;
+    color: #999;
+    font-style: italic;
+    font-weight: thin;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1bba93;
+    font-size: 17px;
+    border: none;
+    border-radius: 5px;
+    color: #bcf5e7;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #169c7b;
+    color: white;
+}
+
+
+
+/* Signin FOrm */
+.signin-form{
+    
+    float: center;
+    width: 49%;
+    padding: 10px;
+
+}
+.buttonin{
+     background-color: #1bba93;   
+     width: 100%;  
+     color: orange;   
+     padding: 5px;   
+     margin: 10px 0px;   
+     border: none;   
+     cursor: pointer;   
+}
+
+.cancelbtn {   
+    width: auto;   
+    padding: 5px 18px;  
+    margin: 10px 10px;
+    border:0px;
+    box-shadow: 0 8px 6px -6px grey;
+}
+.cancelbtn:hover{
+    background-color:#1bba93 ;
+    box-shadow:black ;
+}
+
+
+
+/* responsive code */
+@media(max-width:768px){
+    .main_header_left{
+        height: auto;
+        margin: 5rem 0;
+    }
+    .main_header_left{
+        height: auto;
+        margin-top: 3rem;
+    }
+}

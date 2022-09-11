@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>headerlinks}}
+</head>
+<body>
+    {{>navbar}}
+    <form class="signup-form" action="/login" method="POST">
+        <!-- form header -->
+        <div class="form-header">
+            <h1>Sign-In</h1>
+        </div>
+
+        {{!-- body form --}}
+        <div>
+            <div class="form-body"> 
+                <div class="form-group" >
+                    
+                    <div class="signin-form">
+                        <label class="label-title">Email : </label>   
+                        <input type="email" placeholder="Enter Username" name="email" required>
+                    </div>
+                    <div class="signin-form">  
+                        <label class="label-title">Password : </label>   
+                        <input type="password" placeholder="Enter Password" name="password" required>
+
+                    </div>
+                      
+                    <button class="buttonin" type="submit">Login</button>   
+                    <input type="checkbox" checked="checked"> Remember me   
+                    <button class="cancelbtn" type="button" class="cancelbtn"> Cancel</button>   
+                    Forgot <a href="#"> password? </a> 
+
+                </div>  
+  
+            </div>   
+
+        </div>
+            
+    
+    </form>
+
+    {{>footer}}
+</body>
+</html>
