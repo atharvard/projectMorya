@@ -15,12 +15,19 @@ const app = express()
 // require bcrypt module
 const bcrypt = require("bcryptjs");
 
+// require coookie-parser extarnal package 
+const cookieParser = require("cookie-parser");
+
+// to read auth, require the auth module
+const auth = require("./middleware/auth");
+
 // connecting the mongoose databse in the running file
 require("./db/conn");
 
 
 //require/get the modules
 const Register= require("./models/registers");
+const { cookie } = require('express/lib/response');
 
 
 
@@ -45,6 +52,9 @@ app.use(express.json());
 // our own html code for form we can get the data of form easily, TO REMOVE UNDefiNE TAG
 app.use(express.urlencoded({extended:false}));
 
+// cookie-parser is external so
+app.use(cookieParser());
+
 app.use(express.static(static_path));
 
 
@@ -65,7 +75,37 @@ app.get("/", (req, res) => {
     // render--> which file we want render/showcase
     res.render("index")
 });
-// defining 
+// Get request for secret page
+
+// before auth direct request for geting token is called but due to auth first middleware
+//  will called and the misddleware function will validate ,
+//  if it validate then onnly it will render to the get cookkie request
+app.get("/secret", auth ,  (req, res) => {
+    
+    //to get thses cookie to use in  middleware by command "req.cookies.jwt"
+    console.log(`these is the cookies ${req.cookies.jwt}`);
+    // but now ther is need of authenticate page so that this token will help them to acces these page
+    // render--> which file we want render/showcase
+    res.render("secret")
+});
+
+// defining logout page
+app.get("/logout", auth , async (req, res) => {
+    try{
+        // clearcookie will help to delete the cookie and token "jwt" i scookie name
+        // due to clear cookies it will not validate with token
+        res.clearCookie("jwt");
+        console.log("logout succesfull");
+        // after clear cookies it wiill save the req.user, it return promise therfore await u=is used
+        await req.user.save();
+        // and after saving/logout it will render login page
+        res.render("login");
+    }catch(error){
+        res.status(500).send(error);
+    }
+})
+
+// defining  register page
 app.get("/register", (req, res) => {
     // render--> which file we want render/showcase
     res.render("register")
@@ -119,10 +159,24 @@ app.post("/register", async (req, res) => {
             console.log("the token pasrt" + token);
 
 
+
+            //get the token and store in the cookies
+            // res.cookie() function is used to set the cookies name to value
+            // the value parameter may be a string or object converted to JSON
+            // res.cookies(name, value, [option])
+            res.cookie("jwt", token, {
+                // exprire cookies after 3 sec
+                expires:new Date(Date.now() + 600000 ),
+                // these will make chnage by http only not mnanually
+                httpOnly: true
+            });
+            console.log(cookie)
+
+
             // saving the get data
             const registered = await registerEmployee.save();
             console.log("the page pasrt" + registered);
-            res.status(201).render("index");
+            res.status(201).render("login");
 
         }else{
             res.send("Password are not matching")
@@ -156,11 +210,23 @@ app.post("/login", async (req, res) => {
         console.log("the token pasrt" + token);
 
 
+        res.cookie("jwt", token, {
+            // exprire cookies after 3 sec
+            expires:new Date(Date.now() + 30000 ),
+            // these will make chnage by http only not mnanually
+            httpOnly: true
+        });
+        console.log(cookie)
+
+        
+
+
+
        
         if(isMatch){
             res.status(201).render("index");
         }else{
-            res.send("Invalid Email details")
+            res.send("First Register, If you had register then feed valid credentials")
         }
     }catch (error) {
         res.status(400).send("Invalid Email details")
